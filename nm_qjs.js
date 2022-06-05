@@ -5,13 +5,9 @@ import * as std from 'std';
 import * as os from 'os';
 
 function getMessage() {
-  const header = new Uint8Array(4);
-  std.in.read(header.buffer, 0, header.length);
-  // https://stackoverflow.com/a/26140545
-  const length = new Uint32Array(header.buffer).reduce(
-    (a, b, index) => a | (b << (index * 8)),
-    0
-  );
+  const header = new Uint32Array(1);
+  std.in.read(header.buffer, 0, header.byteLength);
+  const length = header[0];
   const output = new Uint8Array(length);
   std.in.read(output.buffer, 0, length);
   return output;
