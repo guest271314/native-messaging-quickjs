@@ -19,9 +19,7 @@ function encodeMessage(message) {
     {
       length: 4,
     },
-    (_, index) => !index 
-    ? message.length & 0xFF 
-    : (message.length >> (index * 8)) & 0xFF
+    (_, index) => (message.length >> (index * 8)) & 0xff
   );
   const output = new Uint8Array(header.length + message.length);
   output.set(header, 0);
