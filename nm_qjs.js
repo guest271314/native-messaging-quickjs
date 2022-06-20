@@ -1,6 +1,6 @@
-#!/usr/bin/env -S /path/to/qjs -m --std
+#!/usr/bin/env -S qjs -m --std
 // QuickJS Native Messaging host
-// guest271314, 5-6-2022
+// guest271314, 6-19-2022
 import * as std from 'std';
 import * as os from 'os';
 
@@ -13,34 +13,30 @@ function getMessage() {
   return output;
 }
 
-function encodeMessage(message) {
-  // https://stackoverflow.com/a/24777120
+function sendMessage(json) {
   const header = Uint32Array.from(
     {
       length: 4,
     },
-    (_, index) => (message.length >> (index * 8)) & 0xff
+    (_, index) => (json.length >> (index * 8)) & 0xff
   );
-  const output = new Uint8Array(header.length + message.length);
+  const output = new Uint8Array(header.length);
   output.set(header, 0);
-  output.set(message, 4);
-  return output;
-}
-
-function sendMessage(message) {
-  std.out.write(message.buffer, 0, message.length);
+  std.out.write(output.buffer, 0, output.length);
+  std.out.puts(json);
   std.out.flush();
   return true;
 }
 
-function main() {
+function main() {  
   while (true) {
-    let message = getMessage();
-    sendMessage(encodeMessage(message));
+    const message = getMessage();
+    sendMessage(String.fromCharCode.apply(null, message));
   }
 }
+
 try {
   main();
-} catch (e) {
+} catch(e) {
   std.exit(0);
 }
