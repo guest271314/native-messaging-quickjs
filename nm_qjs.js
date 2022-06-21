@@ -1,4 +1,4 @@
-#!/usr/bin/env -S qjs -m --std
+#!/usr/bin/env -S ./qjs -m --std
 // QuickJS Native Messaging host
 // guest271314, 6-19-2022
 import * as std from 'std';
@@ -13,12 +13,12 @@ function getMessage() {
 }
 
 function sendMessage(json) {
-  const header = new Uint8Array(Uint32Array.from(
+  const header = Uint32Array.from(
     {
       length: 4,
     },
     (_, index) => (json.length >> (index * 8)) & 0xff
-  ));
+  );
   std.out.write(header.buffer, 0, header.length);
   std.out.puts(json);
   std.out.flush();
