@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ./qjs -m --std
+#!/usr/bin/env -S qjs -m --std
 // QuickJS Native Messaging host
 // guest271314, 6-19-2022
 import * as std from 'std';
