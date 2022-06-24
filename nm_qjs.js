@@ -12,9 +12,18 @@ function getMessage() {
 }
 
 function sendMessage(json) {
-  const header = new Uint32Array([json.length]);
-  std.out.write(header.buffer, 0, 4);
-  std.out.puts(json);
+  const header = new Uint8Array(
+    Uint32Array.from(
+      {
+        length: 4,
+      },
+      (_, index) => (json.length >> (index * 8)) & 0xff
+    )
+  );
+  const output = new Uint8Array(header.length + json.length);
+  output.set(header, 0);
+  output.set(json, 4);
+  std.out.write(output.buffer, 0, output.length);
   std.out.flush();
   return true;
 }
@@ -22,7 +31,7 @@ function sendMessage(json) {
 function main() {  
   while (true) {
     const message = getMessage();
-    sendMessage(String.fromCharCode.apply(null, message));
+    sendMessage(message);
   }
 }
 
