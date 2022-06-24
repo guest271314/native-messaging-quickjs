@@ -12,16 +12,16 @@ function getMessage() {
   return output;
 }
 
-function sendMessage(json) {
+function sendMessage(message) {
   const header = Uint32Array.from(
     {
       length: 4,
     },
-    (_, index) => (json.length >> (index * 8)) & 0xff
+    (_, index) => (message.length >> (index * 8)) & 0xff
   );
-  const output = new Uint8Array(header.length + json.length);
+  const output = new Uint8Array(header.length + message.length);
   output.set(header, 0);
-  output.set(json, 4);
+  output.set(message, 4);
   std.out.write(output.buffer, 0, output.length);
   std.out.flush();
   return true;
