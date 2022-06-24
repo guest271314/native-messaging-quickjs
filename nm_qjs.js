@@ -12,23 +12,25 @@ function getMessage() {
   return output;
 }
 
-function sendMessage(message) {
-  const header = Uint32Array.from(
-    {
-      length: 4,
-    },
-    (_, index) => (message.length >> (index * 8)) & 0xff
+function sendMessage(json) {
+  const header = new Uint8Array(
+    Uint32Array.from(
+      {
+        length: 4,
+      },
+      (_, index) => (json.length >> (index * 8)) & 0xff
+    )
   );
-  const output = new Uint8Array(header.length + message.length);
-  output.set(header, 0);
-  output.set(message, 4);
-  return output;
+  std.out.write(header.buffer, 0, header.length);
+  std.out.puts(json);
+  std.out.flush();
+  return true;
 }
 
 function main() {  
   while (true) {
     const message = getMessage();
-    sendMessage(message)
+    sendMessage(String.fromCharCode.apply(null, message));
   }
 }
 
