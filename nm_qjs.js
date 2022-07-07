@@ -1,7 +1,6 @@
 #!/usr/bin/env -S qjs --std
 // QuickJS Native Messaging host
 // guest271314, 5-6-2022
-
 function getMessage() {
   const header = new Uint32Array(1);
   std.in.read(header.buffer, 0, 4);
@@ -22,7 +21,6 @@ function sendMessage(message) {
   output.set(message, 4);
   std.out.write(output.buffer, 0, output.length);
   std.out.flush();
-  return true;
 }
 
 function main() {
