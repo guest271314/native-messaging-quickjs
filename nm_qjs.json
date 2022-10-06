@@ -1,5 +1,5 @@
 {
-  "name": "nm_deno",
+  "name": "nm_qjs",
   "description": "QuickJS Native Messaging Host",
   "path": "",
   "type": "stdio",
