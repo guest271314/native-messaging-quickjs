@@ -2,11 +2,12 @@
   "name": "nm-qjs",
   "version": "1.0",
   "manifest_version": 3,
+  "description": "QuickJS Native Messaging host",
   "permissions": ["nativeMessaging"],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "action": {},
-  "author": "guest271314"
+  "url": "https://github.com/guest271314/native-messaging-quickjs"
 }
