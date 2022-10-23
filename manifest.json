@@ -1,5 +1,6 @@
 {
   "name": "nm-qjs",
+  "short_name": "nm_qjs",
   "version": "1.0",
   "manifest_version": 3,
   "description": "QuickJS Native Messaging host",
@@ -9,5 +10,5 @@
     "type": "module"
   },
   "action": {},
-  "url": "https://github.com/guest271314/native-messaging-quickjs"
+  "homepage_url": "https://github.com/guest271314/native-messaging-quickjs"
 }
