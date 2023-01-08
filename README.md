@@ -1,6 +1,6 @@
 QuickJS Native Messaging host
 
-Usage: 
+Dynamic externally connectable usage: 
 
 Pin extension icon to toolbar. Click the icon on Web pages where the origin is intended to be pushed to `"matches"` array in `"externally_connectable"` object is `manifest.json`, select the extension directory in show and edit directory picker. 
 
