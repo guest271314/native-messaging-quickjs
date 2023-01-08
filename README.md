@@ -6,7 +6,7 @@ Pin extension icon to toolbar. Click the icon on Web pages where the origin is i
 
 Once the origin is added to `"matches"` `port` will be defined in the `Window` globally. The messages sent to the port will be sent to the Native Messaging host. The messages received by the Native Messaging client in `ServiceWorker` will be sent to the externally connectable port defined globally on the Web page as `port`.
 
-To unset the origin execute `setExternallyConnectable` function located in `background.js` on a Web page with empty array, or array containing origins to replace array of current origins at first parameter, `true` at second parameter:
+To unset the origin execute `setExternallyConnectable` function located in `background.js` on a Web page, selecting extension directory at directory picker, with empty array, or array containing origins to replace array of current origins at first parameter, `true` at second parameter:
 ```
 setExternallyConnectable([], true)
 ```
