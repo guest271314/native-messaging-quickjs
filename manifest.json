@@ -4,10 +4,25 @@
   "version": "1.0",
   "manifest_version": 3,
   "description": "QuickJS Native Messaging host",
-  "permissions": ["nativeMessaging"],
+  "permissions": [
+    "nativeMessaging",
+    "scripting",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
+  },
+  "externally_connectable": {
+    "matches": [],
+    "ids": [
+      "*"
+    ]
   },
   "action": {},
   "homepage_url": "https://github.com/guest271314/native-messaging-quickjs"
