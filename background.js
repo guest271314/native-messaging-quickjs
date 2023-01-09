@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener((reason) => {
 
 const connectExternal = (id)=>{
   globalThis.port = chrome.runtime.connect(id, {
-    name: 'connect_external'
+    name: id
   });
   port.onMessage.addListener((message)=>{
     console.log(message);
