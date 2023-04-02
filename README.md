@@ -10,3 +10,5 @@ To unset the origin execute `setExternallyConnectable` function located in `back
 ```
 setExternallyConnectable([], true)
 ```
+
+`webserver.js` depends on [webserver-c](https://github.com/guest271314/webserver-c/tree/quickjs-webserver).
