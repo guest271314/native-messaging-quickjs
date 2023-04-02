@@ -27,6 +27,14 @@ function main() {
   while (true) {
     const message = getMessage();
     sendMessage(message);
+    /*
+    webserver(String.fromCharCode(...message.slice(1,-1)), (status)=>{
+      sendMessage([...`"${status}"`].map((s) => s.charCodeAt()));  
+      if (status === 'aborted') {
+        std.exit(0);
+      }
+    });
+    */
   }
 }
 
