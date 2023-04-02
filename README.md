@@ -11,4 +11,4 @@ To unset the origin execute `setExternallyConnectable` function located in `back
 setExternallyConnectable([], true)
 ```
 
-`webserver.js` depends on [webserver-c](https://github.com/guest271314/webserver-c/tree/quickjs-webserver).
+`webserver.js` depends on [webserver-c](https://github.com/guest271314/webserver-c/tree/quickjs-webserver). To start the local server from the Web page pass the program to stream output from to the externally connectable port, e.g., `port.postMessage('parec -d @DEFAULT_MONITOR@')`.
